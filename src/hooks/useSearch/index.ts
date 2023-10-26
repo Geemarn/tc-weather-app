@@ -6,12 +6,12 @@ interface useSearchReturnProps {
   debouncedSearch: (e: string) => void;
 }
 
-export const useSearch = (time?: number): useSearchReturnProps => {
+export const useSearch = (time = 1500): useSearchReturnProps => {
   const [searchValue, setSearchValue] = useState<string>('');
   const changeHandler = (e: string) => setSearchValue(e);
 
   const debouncedSearch = useMemo(
-    () => debounce(changeHandler, time ?? 100),
+    () => debounce(changeHandler, time),
     [searchValue],
   );
 
