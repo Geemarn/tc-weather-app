@@ -1,46 +1,29 @@
-# Getting Started with Create React App
+# Weather application task
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Information
+1. This project was bootstrapped with **Create React App** and **typscript** using **Yarn** as package manager
+2. It has linting and code formatting setup using **eslint**, **prettier** and **lint-staged**
+3. Deployment was carried out using **Vercel**
+4. Test was carried out using **React Testing App** in **Jest** environment
+5. application uses **openweathermap** see api [https://home.openweathermap.org/](https://home.openweathermap.org/)
 
-## Available Scripts
+# Project architecture
+( the weather app searches by city and return itt weather information )
+1. the App is split into two components (SearchForm and AppBody)
+2. two custom hooks (useSearch and useWeatherApi) handle the app business logic.
+   1. useSearch handles the search debounce to 1 request/min (preventing too many api calls)
+   2. useWeatherApi handles the api call and set it state
+3. There is a Fallback component for handling any form of error boundary component
+4. There is a NotFound component for handling routes that are not defined
+## Deployment
 
+please visit
+
+## Run on local machine
+1. NB: Please install **node** on local machine 
 In the project directory, you can run:
-
-### `yarn start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+2. clone project from Github => ### `https://github.com/Geemarn/tc-weather-app.git`
+3. Install all packages  => ### `yarn install`
+4. Start application on local browser => ### `yarn start`
+[http://localhost:3000](http://localhost:3000) to view it in the browser.
+5. run test => `yarn test`
