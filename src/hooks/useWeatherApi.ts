@@ -10,26 +10,31 @@ interface useWeatherApiReturnProps {
 
 interface useWeatherApiProps {
   location: string;
+  unit: string;
 }
 
 export default function useWeatherApi({
   location,
+  unit,
 }: useWeatherApiProps): useWeatherApiReturnProps {
   const [data, setData] = useState({});
+
   const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${
     location || 'berlin'
-  }&units=imperial&appid=${API_KEY}`;
+  }&units=${unit}&appid=${API_KEY}`;
 
   const handleSearchLocation = () => {
     axios
       .get(apiUrl)
-      .then((response) => setData(response.data))
+      .then((response) => {
+        setData(response.data);
+      })
       .catch((err) => console.log(err));
   };
 
   useEffect(() => {
     // handleSearchLocation();
-  }, [location]);
+  }, [apiUrl]);
 
   return {
     handleSearchLocation,

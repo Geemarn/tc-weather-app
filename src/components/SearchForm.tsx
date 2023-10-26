@@ -1,11 +1,11 @@
-import { KeyboardEvent } from 'react';
+import { KeyboardEvent, memo } from 'react';
 
 interface SearchFormProps {
   handleSearchLocation: (e: KeyboardEvent<HTMLInputElement>) => void;
   setLocation: (e: string) => void;
 }
 
-export default function SearchForm({ setLocation }: SearchFormProps) {
+function SearchForm({ setLocation }: SearchFormProps) {
   return (
     <section className='search'>
       <input
@@ -16,3 +16,5 @@ export default function SearchForm({ setLocation }: SearchFormProps) {
     </section>
   );
 }
+
+export default memo(SearchForm);

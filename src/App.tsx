@@ -1,20 +1,27 @@
 import React, { useState } from 'react';
 import SearchForm from './components/SearchForm';
 import useWeatherApi from './hooks/useWeatherApi';
-import './styles/app.css';
 import { useSearch } from './hooks/useSearch';
 import AppBody from './components/AppBody';
-import Favourite from './components/Favourite';
-import isEmpty from 'lodash/isEmpty';
+import Favourite, { IFavourite } from './components/Favourite';
+import './styles/app.css';
+import Tabs from './components/tabs';
 
 function App() {
+  /**handles location search debounce**/
   const { searchValue, debouncedSearch } = useSearch();
-  const [favourite, setFavorite] = useState({
-    isTrue: false,
+  /**handles units update**/
+  const [activeTab, setActiveTab] = useState('metric');
+  /**handles favourite updates**/
+  const [favourite, setFavorite] = useState<IFavourite>({
     data: [],
+    isTrue: false,
+    openDropDown: false,
   });
+
   const { handleSearchLocation, data } = useWeatherApi({
     location: searchValue,
+    unit: activeTab,
   });
 
   return (
@@ -27,10 +34,11 @@ function App() {
         <Favourite
           favourite={favourite}
           setFavorite={setFavorite}
-          allowFavourite={!isEmpty(data)}
+          locationName={data?.name}
         />
       </header>
-      <AppBody data={data} />
+      <Tabs activeTab={activeTab} setActiveTab={setActiveTab} />
+      <AppBody data={data} activeTab={activeTab} />
     </main>
   );
 }
