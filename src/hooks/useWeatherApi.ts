@@ -32,7 +32,7 @@ export default function useWeatherApi({
 
   /**function is only called when location and units changes**/
   useEffect(() => {
-    // handleSearchLocation();
+    handleSearchLocation();
   }, [apiUrl]);
 
   return {
