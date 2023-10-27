@@ -26,6 +26,7 @@ function Favourite({
       <img
         src={favourite.isTrue ? StarY : StarW}
         alt={'favourite-icon'}
+        loading='lazy'
         onClick={() =>
           locationName &&
           setFavorite({
@@ -41,6 +42,7 @@ function Favourite({
         <img
           src={Hamburger}
           alt={'hamburger'}
+          loading='lazy'
           onClick={() =>
             setFavorite({
               ...favourite,

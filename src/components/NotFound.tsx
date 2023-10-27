@@ -11,7 +11,7 @@ export default function NotFound() {
       </div>
       <div>This is not the page you are looking for</div>
       <div>it appears the page you are looking for does not exist</div>
-      <button onClick={() => navigate('/')}>Go back home</button>
+      <button onClick={() => navigate('')}>Go back home</button>
     </div>
   );
 }

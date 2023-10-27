@@ -23,12 +23,8 @@ h1 {
     font-size: 3.2rem;
     font-weight: 200;
 }
-.bold {
-    font-weight: 700;
-}
 
-/**not found**/
-
+/** error **/
 .error {
     font-weight: bold;
     margin: 100px auto 0 auto;
