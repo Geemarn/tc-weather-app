@@ -25,9 +25,7 @@ function App() {
   });
 
   return (
-    <Suspense
-      fallback={<div style={{ fontSize: 40, color: '#fff' }}>Loading</div>}
-    >
+    <Suspense fallback={<div>Loading...</div>}>
       <main className='tc-app-container' data-testid={'tc-app'}>
         <header className={'header'} data-testid={'tc-header'}>
           <SearchForm setLocation={debouncedSearch} />
