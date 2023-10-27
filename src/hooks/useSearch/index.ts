@@ -11,7 +11,7 @@ export const useSearch = (time = 1500): useSearchReturnProps => {
   const changeHandler = (e: string) => setSearchValue(e);
 
   const debouncedSearch = useMemo(
-    () => debounce(changeHandler, time),
+    () => debounce(changeHandler, time ?? 1500),
     [searchValue],
   );
 

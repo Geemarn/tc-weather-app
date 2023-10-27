@@ -10,14 +10,14 @@
 # Project architecture
 ( the weather app searches by city and return itt weather information )
 1. the App is split into two components (SearchForm and AppBody)
-2. two custom hooks (useSearch and useWeatherApi) handle the app business logic.
+2. two custom hooks (useSearch and index) handle the app business logic.
    1. useSearch handles the search debounce to 1 request/min (preventing too many api calls)
-   2. useWeatherApi handles the api call and set it state
+   2. index handles the api call and set it state
 3. There is a Fallback component for handling any form of error boundary component
 4. There is a NotFound component for handling routes that are not defined
 ## Deployment
 
-please visit
+please visit this link [tc-weather-app](https://tc-weather-app-lemon.vercel.app/)
 
 ## Run on local machine
 1. NB: Please install **node** on local machine 

@@ -1,7 +1,7 @@
 import React, { Dispatch, memo, SetStateAction } from 'react';
-import StarY from '../asset/svg/star-yellow.svg';
-import StarW from '../asset/svg/star-white.svg';
-import Hamburger from '../asset/svg/hamburger.svg';
+import StarY from '../../asset/svg/star-yellow.svg';
+import StarW from '../../asset/svg/star-white.svg';
+import Hamburger from '../../asset/svg/hamburger.svg';
 
 export type IFavourite = {
   isTrue: boolean;
@@ -22,10 +22,10 @@ function Favourite({
   const { data, openDropDown, isTrue } = favourite;
 
   return (
-    <section className={'favourite'}>
+    <section className={'favourite'} data-testid={'tc-favourite'}>
       <img
         src={favourite.isTrue ? StarY : StarW}
-        alt={'favourite icon'}
+        alt={'favourite-icon'}
         onClick={() =>
           locationName &&
           setFavorite({
@@ -50,7 +50,7 @@ function Favourite({
         />
 
         {openDropDown && (
-          <ul className='dropdown-content'>
+          <ul className='dropdown-content' data-testid={'tc-dropdown-content'}>
             <h6>Favourite Locations</h6>
             {data.map((name) => (
               <li key={`favourite__${name}`}>

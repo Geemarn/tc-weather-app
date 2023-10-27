@@ -7,7 +7,7 @@ interface TabsProps {
 
 function Tabs({ activeTab, setActiveTab }: TabsProps) {
   return (
-    <div className='tabs'>
+    <div className='tabs' data-testid={'tc-tab'}>
       <div className='tab-list'>
         <button
           className={`${activeTab === 'metric' && 'active'} left-border`}

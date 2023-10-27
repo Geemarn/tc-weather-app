@@ -2,8 +2,15 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
+describe('renders app component', () => {
   render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+  it('should render app component', () => {
+    const appComponent = screen.getByTestId('tc-app');
+    expect(appComponent).toBeInTheDocument();
+  });
+
+  it('should contain class "header"', () => {
+    const { getByTestId } = render(<App />);
+    expect(getByTestId('tc-header')).toBeInTheDocument();
+  });
 });

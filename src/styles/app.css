@@ -1,5 +1,5 @@
 /** App content **/
-.app-container {
+.tc-app-container {
     width: 100vw;
     height: 100vh;
     position: relative;
@@ -10,7 +10,7 @@
 }
 
 
-.app-container:before {
+.tc-app-container:before {
     content: '';
     top: 0;
     left: 0;
@@ -22,7 +22,7 @@
 }
 
 /** Header content **/
-.app-container .header {
+.tc-app-container .header {
     display: flex;
     gap: 1.2rem;
     align-items: center;
@@ -33,23 +33,23 @@
 }
 
 /** Search component **/
-.app-container input[type='text'] {
+.tc-app-container input[type='text'] {
     padding: .8rem 2.7rem;
     font-size: 1.2rem;
     border-radius: 25px;
-    border: 1px solid rgba(255,255,255, 0.8);
+    border: 1px solid rgba(255,255,255, 0.7);
     background: rgba(255,255,255, 0.05);
     color: #f8f8f8;
 }
 
 @media only screen and (max-width: 600px){
-    .app-container input[type='text'] {
+    .tc-app-container input[type='text'] {
         padding: .8rem 1.2rem;
     }
 }
-.app-container input:focus {
+.tc-app-container input:focus {
     outline: none;
-    border: 2px solid rgba(255,255,255, 0.8);
+    border: 1px solid rgba(255,255,255);
 }
 ::placeholder {
     color: #f8f8f8;
@@ -67,34 +67,34 @@
     flex-flow: column;
     gap: 2rem
 }
-.app-container .top-content {
+.tc-app-container .top-content {
     width: 100%;
     margin: 1rem auto;
     text-align: center;
 }
-.app-container .location p {
+.tc-app-container .location p {
     margin: 1rem auto 0.5rem auto;
     font-size: 2.2rem;
     font-weight: 200;
 }
-.app-container .location h2 {
+.tc-app-container .location h2 {
     font-weight: normal;
     margin-bottom: 1.2rem;
 }
-.app-container .temp p {
+.tc-app-container .temp p {
     display: flex;
     justify-content: center;
     gap: 1.2rem
 }
-.app-container .desc {
+.tc-app-container .desc {
     font-size: 1.6rem;
 }
-.app-container .icon {
+.tc-app-container .icon {
     position: relative;
     scale: 1.4;
 }
 
-.app-container .bottom-card {
+.tc-app-container .bottom-card {
     display: flex;
     justify-content: space-evenly;
     text-align: center;
@@ -107,7 +107,7 @@
 }
 
 /** favourite **/
-.app-container .favourite {
+.tc-app-container .favourite {
     display: flex;
     align-items: center;
     gap: 1rem;
