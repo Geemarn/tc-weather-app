@@ -1,39 +1,41 @@
 import React, { memo } from 'react';
 
+const weatherBaseUrl = process.env['REACT_APP_WEATHER_IMAGE'];
+const units: Record<string, Record<string, string>> = {
+  metric: {
+    temp: 'C',
+    hum: 'M/S',
+  },
+  imperial: {
+    temp: 'F',
+    hum: 'MPH',
+  },
+  standard: {
+    temp: 'K',
+    hum: 'M/S',
+  },
+};
+
 interface AppBodyProps {
   data: Record<string, any>;
   activeTab: string;
 }
-const weatherBaseUrl = process.env['REACT_APP_WEATHER_IMAGE'];
-
 function AppBody({ data, activeTab }: AppBodyProps) {
   const { name, main, weather, wind } = data ?? {};
   const { temp, humidity, feels_like, temp_min, temp_max } = main ?? {};
+
   const weatherIconUrl = `${weatherBaseUrl}/${weather?.[0]?.icon}@2x.png`;
-  const units: Record<string, Record<string, string>> = {
-    metric: {
-      temp: 'C',
-      hum: 'M/S',
-    },
-    imperial: {
-      temp: 'F',
-      hum: 'MPH',
-    },
-    standard: {
-      temp: 'K',
-      hum: 'M/S',
-    },
-  };
+
   return (
-    <body className={'body'}>
-      <section className='top-content'>
+    <section className={'body'} data-testid={'tc-body'}>
+      <aside className='top-content'>
         <div className='location'>
           <p>My Location</p>
           <h2>{name}</h2>
         </div>
         <div className='temp'>
           <h1>
-            {temp?.toFixed() ?? '-'}°{units[activeTab]['temp']}
+            {temp?.toFixed() ?? '-'}°{units[activeTab]?.temp}
           </h1>
           <p>
             {temp_min && <span>H:{temp_min.toFixed()}°</span>}
@@ -41,18 +43,14 @@ function AppBody({ data, activeTab }: AppBodyProps) {
           </p>
         </div>
         <p className={'desc'}>{weather?.[0].main}</p>
-        <img
-          src={'https://openweathermap.org/img/wn/01n@4x.png'}
-          alt={''}
-          className={'icon'}
-        />
-      </section>
+        <img src={weatherIconUrl} alt={'wth-loc'} className={'icon'} />
+      </aside>
 
       {main && (
-        <section className='bottom-card'>
+        <aside className='bottom-card' data-testid={'tc-bottom-card'}>
           <div>
             <p className='bold'>
-              {feels_like?.toFixed()}°{units[activeTab]['temp']}
+              {feels_like?.toFixed()}°{units[activeTab]?.temp}
             </p>
             <p>Feels Like</p>
           </div>
@@ -62,13 +60,13 @@ function AppBody({ data, activeTab }: AppBodyProps) {
           </div>
           <div>
             <p className='bold'>
-              {wind?.speed?.toFixed()} {units[activeTab]['hum']}
+              {wind?.speed?.toFixed()} {units[activeTab]?.hum}
             </p>
             <p>Wind Speed</p>
           </div>
-        </section>
+        </aside>
       )}
-    </body>
+    </section>
   );
 }
 

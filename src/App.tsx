@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, Suspense } from 'react';
 import SearchForm from './components/SearchForm';
-import useWeatherApi from './hooks/useWeatherApi';
 import { useSearch } from './hooks/useSearch';
 import AppBody from './components/AppBody';
 import Favourite, { IFavourite } from './components/Favourite';
 import './styles/app.css';
-import Tabs from './components/tabs';
+import Tabs from './components/Tab';
+import useWeatherApi from './hooks/useWeatherApi';
 
 function App() {
   /**handles location search debounce**/
@@ -19,27 +19,28 @@ function App() {
     openDropDown: false,
   });
 
-  const { handleSearchLocation, data } = useWeatherApi({
+  const { data } = useWeatherApi({
     location: searchValue,
     unit: activeTab,
   });
 
   return (
-    <main className='app-container'>
-      <header className={'header'}>
-        <SearchForm
-          setLocation={debouncedSearch}
-          handleSearchLocation={handleSearchLocation}
-        />
-        <Favourite
-          favourite={favourite}
-          setFavorite={setFavorite}
-          locationName={data?.name}
-        />
-      </header>
-      <Tabs activeTab={activeTab} setActiveTab={setActiveTab} />
-      <AppBody data={data} activeTab={activeTab} />
-    </main>
+    <Suspense
+      fallback={<div style={{ fontSize: 40, color: '#fff' }}>Loading</div>}
+    >
+      <main className='tc-app-container' data-testid={'tc-app'}>
+        <header className={'header'} data-testid={'tc-header'}>
+          <SearchForm setLocation={debouncedSearch} />
+          <Favourite
+            favourite={favourite}
+            setFavorite={setFavorite}
+            locationName={data?.name}
+          />
+        </header>
+        <Tabs activeTab={activeTab} setActiveTab={setActiveTab} />
+        <AppBody data={data} activeTab={activeTab} />
+      </main>
+    </Suspense>
   );
 }
 

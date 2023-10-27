@@ -1,9 +1,8 @@
-import { KeyboardEvent, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 const apiKey = process.env['REACT_APP_API_KEY'];
 
 interface useWeatherApiReturnProps {
-  handleSearchLocation: (e: KeyboardEvent<HTMLInputElement>) => void;
   data: Record<string, any>;
 }
 interface useWeatherApiProps {
@@ -36,7 +35,6 @@ export default function useWeatherApi({
   }, [apiUrl]);
 
   return {
-    handleSearchLocation,
     data,
   };
 }
